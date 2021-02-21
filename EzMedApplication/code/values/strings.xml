@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">EzMed</string>
+    <string name="info_1">COVID-19 spreads primarily when people are in close contact and one person inhales small droplets produced by an infected person (symptomatic or not) coughing, sneezing, talking, or singing.</string>
+    <string name="info_2">Clean your hands often. Use soap and water, or an alcohol-based hand rub. Maintain a safe distance from anyone who is coughing or sneezing. Wear a mask when physical distancing is not possible.</string>
+    <string name="info_3">Stay home. Most people with COVID-19 have mild illness and can recover at home without medical care. Take care of yourself. Get rest and stay hydrated. Stay in touch with your doctor.</string>
+</resources>

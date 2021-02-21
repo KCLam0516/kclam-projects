@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBlue"
+    tools:context=".AmortisationSchedulePage">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/darkGrey"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Amortisation Schedule"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="27dp"
+        android:gravity="center_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:clickable="false"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/title"
+            android:fillViewport="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:clickable="false">
+
+                <LinearLayout
+                    android:id="@+id/lllayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:clickable="false">
+
+                    <Button
+                        android:id="@+id/message"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="35dp"
+                        android:background="@color/darkGrey"
+                        android:text="PERSONALISED MESSAGE"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <Spinner
+                        android:id="@+id/dropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown"/>
+
+                    <HorizontalScrollView
+                        android:id="@+id/scheduleView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:scrollbars="horizontal">
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/border"
+                            android:gravity="center"
+                            android:stretchColumns="0,1,2,3,4,5">
+
+                            <TableRow
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="0dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/border">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:text=" Payment Number "
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:text=" Begining Balance (RM) "
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:text=" Monthly Repayment (RM) "
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:text=" Interest Paid (RM) "
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:text=" Principal Paid (RM) "
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="18dp"
+                                    android:textStyle="bold" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="0dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/border">
+
+                                <TextView
+                                    android:id="@+id/payment_number_box"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/beginning_balance_box"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/monthly_repayment_box"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/interest_paid_box"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="16dp" />
+
+                                <TextView
+                                    android:id="@+id/principal_paid_box"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_column="0"
+                                    android:layout_margin="0dp"
+                                    android:background="@drawable/border"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/darkGrey"
+                                    android:textSize="16dp" />
+
+                            </TableRow>
+                        </TableLayout>
+                    </HorizontalScrollView>
+
+                    <TableLayout
+                        android:id="@+id/monthView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/border"
+                        android:gravity="center"
+                        android:stretchColumns="0,1">
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/border">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_column="0"
+                                android:layout_margin="0dp"
+                                android:background="@drawable/border"
+                                android:text=" Months "
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/darkGrey"
+                                android:textAlignment="center"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_column="0"
+                                android:layout_margin="0dp"
+                                android:background="@drawable/border"
+                                android:text=" Interest Paid "
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/darkGrey"
+                                android:textAlignment="center"/>
+
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="0dp"
+                            android:layout_margin="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/border">
+
+                            <TextView
+                                android:id="@+id/months_box"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_column="0"
+                                android:layout_margin="0dp"
+                                android:background="@drawable/border"
+                                android:textAlignment="center"
+                                android:textSize="16dp"
+                                android:textColor="@color/darkGrey" />
+
+                            <TextView
+                                android:id="@+id/monthly_interest_paid"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_column="0"
+                                android:layout_margin="0dp"
+                                android:background="@drawable/border"
+                                android:textAlignment="center"
+                                android:textSize="16dp"
+                                android:textColor="@color/darkGrey"/>
+
+                        </TableRow>
+                    </TableLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/lllayout"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="0.8"
+                        android:gravity="left"
+                        android:text="Kean Chin Loan Calculator"
+                        android:textColor="@color/grey"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

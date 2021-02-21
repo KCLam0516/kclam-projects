@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.finalyearproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".paytest"></activity>
+        <activity android:name=".activity.AddCarActivity" />
+        <activity android:name=".activity.HostProfileActivity" />
+        <activity android:name=".activity.CartActivity" />
+        <activity android:name=".activity.HostMainActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.ProfilePictureActivity" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.EditDetailsActivity" />
+        <activity android:name=".activity.PasswordActivity" />
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.CustomerServiceActivity" />
+        <activity android:name=".activity.FeedbackActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+    </application>
+
+</manifest>

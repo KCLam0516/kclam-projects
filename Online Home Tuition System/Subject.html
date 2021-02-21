@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/popup.css">
+<title>Super Brilliant Page</title>
+
+  <link rel="icon" href="images/Legend.png">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--menu-->
+<script src="js/scripts.js"></script>
+<link href="css/styles.css" rel="stylesheet">
+<!--//menu-->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- slide -->
+<script type="text/javascript" src="js/signout.js"> </script>
+<!-- firebase -->
+<script src="https://www.gstatic.com/firebasejs/6.4.0/firebase.js"></script>
+<script src="js/AccountFirebase.js"></script>
+<script src="js/responsiveslides.min.js"></script>
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+  </script>
+
+  <script>
+
+
+  $(function () {
+
+  initApp();
+  });
+
+
+
+function initApp() {
+    // Listening for auth state changes.
+    // [START authstatelistener]
+    firebase.auth().onAuthStateChanged(function(user) {
+
+      if (user) {
+        // User is signed in.
+
+    if(user.displayName == null || user.photoURL == null)
+      window.location.href = "UserProfile.html";
+    else
+    {
+           var photoURL = user.photoURL;
+       $("#imgProfile").attr("src",photoURL);
+    }
+
+      }
+   else
+     window.location.href = "LoginPage.html";
+    });
+    // [END authstatelistener]
+  }
+  </script>
+  <script>
+  firebase.auth().onAuthStateChanged(function(user) {
+
+
+  var user = firebase.auth().currentUser;
+  if(user)
+  {
+  var database = firebase.database();
+
+  if(user.email!=null){
+return firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+  var type = snapshot.val().securitylevel;
+
+ var name = snapshot.val().name;
+  var gender = snapshot.val().gender;
+  var ic = snapshot.val().ic;
+
+  var st = snapshot.val().state;
+  var state="";
+  if (st=="Foreign country")
+  {
+  state="Foreign country";
+  }
+  else
+  {
+  state=st+", Malaysia";
+  }
+  var tel = snapshot.val().tel;
+
+  //<!-- set user data -->
+ $('#disname').html(user.displayName);
+ $('#state').html(" "+state+"<i class='glyphicon glyphicon-map-marker'></i>");
+ $('#udata').html("<i class='glyphicon glyphicon-user'></i>  "+name+", "+gender+"<br /><i class='glyphicon glyphicon-envelope'></i> "+user.email+"<br /><i class='glyphicon glyphicon-pencil'></i> "+ic+"<br /><i class='glyphicon glyphicon-earphone'></i> "+tel);
+
+ //<!-- set edit data -->
+
+  $('#eemail').val(user.email);
+ $('#efull_name').val(name);
+ $('#eic').val(ic);
+ $('#edisplay_name').val(user.displayName);
+ $('#etel').val(tel);
+ $('#estate').val(st).prop('selected', true);
+ $('#egender').val(gender).prop('selected', true);
+});
+
+}
+else{
+$("#hireset").attr('style','display:none;');
+return firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+
+ if(snapshot.val()==null)
+ {
+  $('#edisplay_name').val(user.displayName);
+   $('#efull_name').val(user.displayName);
+   $('#first').html("First Login Edit");
+    $('#eemail').val("Facebook Account");
+ $("#click").click();}
+ else{
+ return firebase.database().ref('/users/' + user.uid).once('value').then(function(snapshot) {
+    var type = snapshot.val().securitylevel;
+
+  //if(type==1)
+  //{
+  ////$('#admin').html("<a href='webdark/adminmain.html'>Admin</a>");
+  //$('#esc').val(1);
+  //}
+
+
+  var name = snapshot.val().name;
+  var gender = snapshot.val().gender;
+  var ic = snapshot.val().ic;
+
+  var st = snapshot.val().state;
+  var state="";
+  if (st=="Foreign country")
+  {
+  state="Foreign country";
+  }
+  else
+  {
+  state=st+", Malaysia";
+  }
+  var tel = snapshot.val().tel;
+
+  //<!--set user data -->
+ $('#disname').html(user.displayName);
+ $('#state').html(" "+state+"<i class='glyphicon glyphicon-map-marker'></i>");
+ $('#udata').html("<i class='glyphicon glyphicon-user'></i>  "+name+", "+gender+"<br /><i class='glyphicon glyphicon-envelope'></i> Facebook Account<br /><i class='glyphicon glyphicon-pencil'></i> "+ic+"<br /><i class='glyphicon glyphicon-earphone'></i> "+tel);
+
+ //<!-- set edit data -->
+
+  $('#eemail').val("Facebook Account");
+ $('#efull_name').val(name);
+ $('#eic').val(ic);
+ $('#edisplay_name').val(user.displayName);
+ $('#etel').val(tel);
+ $('#estate').val(st).prop('selected', true);
+ $('#egender').val(gender).prop('selected', true);
+});
+ }
+
+});
+}
+		  }
+	});
+
+
+  </script>
+
+</head>
+<body >
+
+<!--header-->
+
+	<div class="navigation">
+			<div class="container-fluid">
+				<nav class="pull">
+					<ul>
+						<li><a  href="StudentHomePage.html">Home</a></li>
+						<li><a  href="AboutPage.html">About Us</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+    <div class="header">
+    	<div class="container">
+
+    		<!--logo-->
+
+    			<div class="logo">
+    				<h1><a href="StudentHomePage.html">Super Brilliant</a></h1>
+    			</div>
+
+    		<!--//logo-->
+
+    		<div class="top-nav">
+    			<ul class="right-icons">
+            <UPname class="hide" id="un" ></UPname>
+            <li id="sg"><a  href="StudentLoginPage.html"><i class="glyphicon glyphicon-user"> </i>Student Login</a></li>
+            <li id="tg"><a  href="TeacherLoginPage.html"><i class="glyphicon glyphicon-user"> </i>Teacher Login</a></li>
+            <li class="hide" id="so" ><a href ="#signout" id="signout"><i class="glyphicon glyphicon-user"></i>LogOut</a></li>
+            <li class="hide" id="pf" ><a href ="StudentPage.html"><i class="glyphicon glyphicon-pencil"></i>My profile</a></li>
+
+
+    			</ul>
+    			<div class="nav-icon">
+    				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
+    						<a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
+    					</div>
+
+          	</div>
+            <div class="clearfix"> </div>
+
+
+        					 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+        				    	<script type="text/javascript">
+        						    $(document).ready(function () {
+        						        $('#horizontalTab').easyResponsiveTabs({
+        						            type: 'default', //Types: default, vertical, accordion
+        						            width: 'auto', //auto or any width like 600px
+        						            fit: true   // 100% fit in a container
+        						        });
+        						    });
+        			  			 </script>
+        				</div>
+        				</div>
+        				 <script>
+        						$(document).ready(function() {
+        						$('.popup-with-zoom-anim').magnificPopup({
+        							type: 'inline',
+        							fixedContentPos: false,
+        							fixedBgPos: true,
+        							overflowY: 'auto',
+        							closeBtnInside: true,
+        							preloader: false,
+        							midClick: true,
+        							removalDelay: 300,
+        							mainClass: 'my-mfp-zoom-in'
+        						});
+
+        						});
+        				</script>
+
+
+        		</div>
+        		<div class="clearfix"> </div>
+        		</div>
+        </div>
+<!--End of header-->
+
+
+<!-- Page Content -->
+<div class=" banner-buying">
+	<div class=" container">
+	<h3 style="color: blue">Subject</h3>
+	</div>
+</div>
+<div class="container">
+
+
+<br>
+<p>
+                    <img width="75%" src="img/head_bob.gif" alt="" class="img-rounded img-responsive" />
+                    <p><strong><h1>Please choose a class</h1></strong></p>
+                    <div>
+                            <a href="#" id="button" class="button">Class 1</a>
+                    </div>
+                        <section id="payform">
+                        <div class="app-container">
+                        <div class="top-box">
+                        <span class="close">+</span>
+                        </div>
+                        <div class="my-box">
+                        <form>
+                        <div class="card-details">
+                          <b><h2>Super Briliant Tuition Center<h2></b>
+                          <script>
+                            
+                            firebase.auth().onAuthStateChanged(function(user){
+                                var user = firebase.auth().currentUser;
+                                if (user){
+                                    var name;
+                                    name = user.displayName;
+                                }else{
+
+                                }
+                                
+                            });
+                            
+                            
+                          </script>
+                          <h3>please choose any subject </h3>
+
+                          <p>
+                            
+                                <p class = "mb-5">
+                                    <label>
+                                        Bahasa Melayu
+                                        <input type = "checkbox" id="BM1" name = "subject1" value= "80" onclick = "myFunction1()"/>
+                                    </label><br>
+                                    <label>
+                                        English
+                                        <input type = "checkbox" id="ENG1" name = "subject1" value="80" onclick = "myFunction1()"/>
+                                    </label><br>
+                                    <label>
+                                         Chesmistry
+                                         <input type = "checkbox" id="CHE1" name = "subject1" value="80" onclick = "myFunction1()"/>
+                                     </label><br>
+                                     <label>
+                                         Physics
+                                         <input type = "checkbox" id="PHY1" name = "subject1" value="80" onclick = "myFunction1()"/>
+                                     </label><br>
+                                     <label>
+                                         Biology
+                                         <input type = "checkbox" id="BIO1" name = "subject1" value="80" onclick = "myFunction1()"/>
+                                     </label><br>
+                                     <label>
+                                         Total Fees
+                                         <input value="$0.00" readonly="readonly" type="text" id="total"/>
+                                     </label>
+                                </p>
+                            </p>
+                            
+                          <button class = "pay-btn" id="Pay" ><a href ="StudentHomePage.html">Payment</a></button>
+                          <!-- <button class="pay-btn" id="Pay" type="button">Pay</button> -->
+                        </div>
+                        </div>
+                      </form>
+                    </section>
+                    <script>
+                        function myFunction1()
+                        {
+                            var total = 0; 
+                            var input = document.getElementsByName("subject1");
+                            for(var i = 0; i<input.length;i++)
+                            {
+                                if(input[i].checked)
+                            {
+                                total += parseFloat(input[i].value);
+                            }
+                        }
+            
+                        document.getElementById("total").value = "$" + total.toFixed(2);
+            
+                        }
+                    </script>
+
+        
+        <div>
+                <a href="#" id="button1" class="button1">Class 2</a>
+        </div>
+            <section id="payform">
+            <div class="app-container">
+            <div class="top-box">
+            <span class="close">+</span>
+            </div>
+            <div class="my-box">
+            <form>
+            <div class="card-details">
+            <b><h2>Super Briliant Tuition Center<h2></b>
+            <script>
+                
+                firebase.auth().onAuthStateChanged(function(user){
+                    var user = firebase.auth().currentUser;
+                    if (user){
+                        var name;
+                        name = user.displayName;
+                    }else{
+
+                    }
+                    
+                });   
+            </script>
+            <h3>please choose any subject </h3>
+
+            <p>
+                
+                    <p class = "mb-5">
+                        <label>
+                            Bahasa Melayu
+                            <input type = "checkbox" id="BM2" name = "subject2" value= "80" onclick = "myFunction2()"/>
+                        </label><br>
+                        <label>
+                            English
+                            <input type = "checkbox" id="ENG2" name = "subject2" value="80" onclick = "myFunction2()"/>
+                        </label><br>
+                        <label>
+                            Chemistry
+                            <input type = "checkbox" id="CHE2" name = "subject2" value="80" onclick = "myFunction2()"/>
+                        </label><br>
+                        <label>
+                            Physics
+                            <input type = "checkbox" id="PHY2" name = "subject2" value="80" onclick = "myFunction2()"/>
+                        </label><br>
+                        <label>
+                            Biology
+                            <input type = "checkbox" id="BIO2" name = "subject2" value="80" onclick = "myFunction2()"/>
+                        </label><br>
+                        <label>
+                            Total Fees
+                            <input value="$0.00" readonly="readonly" type="text" id="total"/>
+                        </label>
+                    </p>
+                </p>
+                
+            <button class = "pay-btn" id="Pay" ><a href ="StudentHomePage.html ">Payment</a></button>
+            <!-- <button class="pay-btn" id="Pay" type="button">Pay</button> -->
+            </div>
+            </div>
+        </form>
+        </section>
+        <script>
+            function myFunction2()
+            {
+                var subjectPrice = 0; 
+                var input = document.getElementsByName("subject2");
+                for(var i = 0; i<input.length;i++)
+                {
+                if(input[i].checked)
+                {
+                subjectPrice += parseFloat(input[i].value);
+                }
+                }
+                        
+                document.getElementById("subjectPrice").value = "$" + subjectPrice.toFixed(2);
+                        
+            }
+        </script>
+        
+        <div>
+                <a href="#" id="button2" class="button2">Class 3</a>
+        </div>
+            <section id="payform">
+            <div class="app-container">
+            <div class="top-box">
+            <span class="close">+</span>
+            </div>
+            <div class="my-box">
+            <form>
+            <div class="card-details">
+            <b><h2>Super Briliant Tuition Center<h2></b>
+            <script>
+                
+                firebase.auth().onAuthStateChanged(function(user){
+                    var user = firebase.auth().currentUser;
+                    if (user){
+                        var name;
+                        name = user.displayName;
+                    }else{
+
+                    }
+                    
+                });   
+            </script>
+            <h3>please choose any subject </h3>
+
+            <p>
+                
+                    <p class = "mb-5">
+                            <label>
+                                Bahasa Melayu
+                                <input type = "checkbox" id="BM3" name = "subject3" value= "80" onclick = "myFunction3()"/>
+                            </label><br>
+                            <label>
+                                English
+                                <input type = "checkbox" id="ENG3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                            </label><br>
+                            <label>
+                                Chemistry
+                                <input type = "checkbox" id="CHE3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                            </label><br>
+                            <label>
+                                Physics
+                                <input type = "checkbox" id="PHY3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                            </label><br>
+                            <label>
+                                Biology
+                                <input type = "checkbox" id="BIO3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                            </label><br>
+                            <label>
+                                Total Fees
+                                <input value="$0.00" readonly="readonly" type="text" id="total"/>
+                            </label>
+                        </p>
+                    </p>
+                    
+                
+            <button class = "pay-btn" id="Pay" ><a href ="StudentHomePage.html ">Payment</a></button>
+            <!-- <button class="pay-btn" id="Pay" type="button">Pay</button> -->
+            </div>
+            </div>
+        </form>
+        </section>
+        <script>
+            function myFunction3()
+            {
+                var subjectPrices = 0; 
+                var input = document.getElementsByName("subject3");
+                for(var i = 0; i<input.length;i++)
+                {
+                if(input[i].checked)
+                {
+                subjectPrices += parseFloat(input[i].value);
+                }
+                }
+                        
+                document.getElementById("subjectPrices").value = "$" + subjectPrices.toFixed(2);
+                        
+            }
+        </script>
+
+    <script>
+        $("#button3").hide() ;
+        
+    </script>
+
+    <div>
+        <a href="#" id="button3" class="button3">Class 4</a>
+    </div>
+    <section id="payform">
+    <div class="app-container">
+    <div class="top-box">
+    <span class="close">+</span>
+    </div>
+    <div class="my-box">
+    <form>
+    <div class="card-details">
+    <b><h2>Super Briliant Tuition Center<h2></b>
+    <script>
+    
+    firebase.auth().onAuthStateChanged(function(user){
+        var user = firebase.auth().currentUser;
+        if (user){
+            var name;
+            name = user.displayName;
+        }else{
+
+        }
+        
+    });   
+    </script>
+    <h3>please choose any subject </h3>
+
+<p>
+    
+        <p class = "mb-5">
+                <label>
+                    Bahasa Melayu
+                    <input type = "checkbox" id="BM3" name = "subject3" value= "80" onclick = "myFunction3()"/>
+                </label><br>
+                <label>
+                    English
+                    <input type = "checkbox" id="ENG3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                </label><br>
+                <label>
+                    Chemistry
+                    <input type = "checkbox" id="CHE3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                </label><br>
+                <label>
+                    Physics
+                    <input type = "checkbox" id="PHY3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                </label><br>
+                <label>
+                    Biology
+                    <input type = "checkbox" id="BIO3" name = "subject3" value="80" onclick = "myFunction3()"/>
+                </label><br>
+                <label>
+                    Total Fees
+                    <input value="$0.00" readonly="readonly" type="text" id="total"/>
+                </label>
+            </p>
+        </p>
+        
+    
+        <button class = "pay-btn" id="Pay" ><a href ="StudentHomePage.html ">Payment</a></button>
+        <!-- <button class="pay-btn" id="Pay" type="button">Pay</button> -->
+        </div>
+        </div>
+        </form>
+        </section>
+        <script>
+        function myFunction3()
+        {
+            var subjectPrices = 0; 
+            var input = document.getElementsByName("subject3");
+            for(var i = 0; i<input.length;i++)
+            {
+            if(input[i].checked)
+            {
+            subjectPrices += parseFloat(input[i].value);
+            }
+            }
+                    
+            document.getElementById("subjectPrices").value = "$" + subjectPrices.toFixed(2);
+                    
+        }
+        </script>
+
+
+        <script src="js/popup.js"></script>
+</p>
+<br>
+    </div>
+
+</div>
+<!-- /.container -->
+
+
+
+
+
+
+
+
+
+        <!--footer-->
+        <div class="footer">
+        	<div class="container">
+        		<div class="footer-top-at">
+        			<div class="col-md-3 amet-sed">
+        				<h4>Our Company</h4>
+        				<ul class="nav-bottom">
+                  <li><a href="AboutPage.html">About Us</a></li>
+              
+
+        				</ul>
+        			</div>
+
+        			<div class="col-md-3 amet-sed">
+        				<h4>Customer Support</h4>
+        				<p>Mon-Fri, 7AM-7PM </p>
+        				<p>Sat-Sun, 8AM-5PM </p>
+        				<p>012-3456 789</p>
+
+
+        			</div>
+        			<div class="col-md-3 amet-sed ">
+        				<h4>Join Us</h4>
+        				   <ul class="nav-bottom">
+
+        						<li><a href="StudentSignupPage.html">Student Sign Up</a></li>
+        						<li><a href="TeacherSignUpPage">Teacher Sign Up</a></li>
+
+        					</ul>
+        					<ul class="social">
+                    <li><a href="https://www.facebook.com/"><i> </i></a></li>
+                    <li><a href="https://plus.google.com/"><i class="gmail"> </i></a></li>
+                    <li><a href="https://www.twitter.com/"><i class="twitter"> </i></a></li>
+                    <li><a href="https://www.instagram.com/"><i class="camera"> </i></a></li>
+                    <li><a href="https://dribbble.com/"><i class="dribble"> </i></a></li>
+        					</ul>
+        			</div>
+        		<div class="clearfix"> </div>
+        		</div>
+        	</div>
+
+
+
+        </div>
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="col-md-4 footer-logo">
+              <h2><a href="StudentHomePage.html">Super Brilliant</a></h2>
+            </div>
+            <div class="col-md-8 footer-class">
+              <p >Copyright© 2019 Super Brilliant Home Tuition. All Rights Reserved  </p>
+            </div>
+          <div class="clearfix"> </div>
+          </div>
+        </div>
+        </div>
+        <!--//footer-->
+        
+</body>
+
+</html>

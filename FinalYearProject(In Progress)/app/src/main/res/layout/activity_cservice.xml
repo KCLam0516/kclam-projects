@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".activity.CustomerServiceActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:theme="@style/AppTheme.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Customer Service"
+        app:titleMarginStart="40dp"
+        app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:padding="10dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Us"
+                    android:textColor="@color/green"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Office number: 05-1234567"
+                    android:textColor="@color/green"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile number: 012-3456789"
+                    android:textColor="@color/green"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="E-mail"
+                    android:textColor="@color/green"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="lamkeanchin@1utar.my"
+                    android:textColor="@color/green"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content"
+                    android:text="Office Address"
+                    android:textColor="@color/green"
+                    android:textSize="25dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="87dp"
+                    android:text="123, Jalan Tai Fi Dong, Kampung Baru,
+                    30010 Kampar Perak"
+                    android:textColor="@color/green"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

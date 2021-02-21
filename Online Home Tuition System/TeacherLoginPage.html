@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Super Brilliant</title>
+
+  <link rel="icon" href="images/Legend.png">
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--menu-->
+<script src="js/scripts.js"></script>
+<link href="css/styles.css" rel="stylesheet">
+<!--//menu-->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--Firebase -->
+<script src="https://www.gstatic.com/firebasejs/6.4.0/firebase.js"></script>
+<script src="js/AccountFirebase.js"></script>
+<!-- slide -->
+<script src="js/responsiveslides.min.js"></script>
+<script src="js/login.js"></script>
+<script src="js/sociallogin.js"></script>
+   <script>
+    $(function () {
+      $("#slider").responsiveSlides({
+      	auto: true,
+      	speed: 500,
+        namespace: "callbacks",
+        pager: true,
+      });
+    });
+
+    $(function () {
+
+    initApp();
+
+		$("#Login").click(function (e) {
+            var email = $("#accemail").val();
+            var password = $("#accpassword").val();
+
+		           firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+
+           var errorCode = error.code;
+           var errorMessage = error.message;
+
+           if (errorCode == 'auth/wrong-password')
+            $("#invalid").html("<h4 style=\"color:red\">Wrong password, please try again!</h4>");
+           else
+            $("#invalid").html("<h4 style=\"color:red\">" + errorMessage + "</h4>");
+
+          });
+
+
+		   if (firebase.auth().currentUser)
+
+               window.location.href = "TeacherHomePage.html";
+
+        });
+	});
+
+    function initApp() {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+
+    		    window.location.href = "TeacherHomePage.html";
+
+      }
+      });
+    }
+  </script>
+
+
+</head>
+<body >
+<!--header-->
+	<div class="navigation">
+			<div class="container-fluid">
+				<nav class="pull">
+          <ul>
+						<li><a  href="index.html">Home</a></li>
+						<li><a  href="AboutPage.html">About Us</a></li>
+						
+					</ul>
+				</nav>
+			</div>
+		</div>
+    <div class="header">
+    	<div class="container">
+    		<!--logo-->
+    			<div class="logo">
+    				<h1><a href="TeacherHomePage.html">Super Brilliant</a></h1>
+    			</div>
+    		<!--//logo-->
+
+    		<div class="top-nav">
+    			<ul class="right-icons">
+            <UPname class="hide" id="un" ></UPname>
+            <li id="sg"><a  href="StudentLoginPage.html"><i class="glyphicon glyphicon-user"> </i>Student Login</a></li>
+            <li id="tg"><a  href="TeacherLoginPage.html"><i class="glyphicon glyphicon-user"> </i>Teacher Login</a></li>
+            <li class="hide" id="so" ><a href ="#signout" id="signout"><i class="glyphicon glyphicon-user"></i>LogOut</a></li>
+            <li class="hide" id="pf" ><a href ="TeacherPage.html"><i class="glyphicon glyphicon-pencil"></i>My profile</a></li>
+
+    			</ul>
+    			<div class="nav-icon">
+    				<div class="hero fa-navicon fa-2x nav_slide_button" id="hero">
+    						<a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> </a>
+    				</div>
+          	</div>
+            <div class="clearfix"> </div>
+        					 <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+        				    	<script type="text/javascript">
+        						    $(document).ready(function () {
+        						        $('#horizontalTab').easyResponsiveTabs({
+        						            type: 'default', //Types: default, vertical, accordion
+        						            width: 'auto', //auto or any width like 600px
+        						            fit: true   // 100% fit in a container
+        						        });
+        						    });
+        			  			 </script>
+        				</div>
+        				</div>
+        				 <script>
+        						$(document).ready(function() {
+        						$('.popup-with-zoom-anim').magnificPopup({
+        							type: 'inline',
+        							fixedContentPos: false,
+        							fixedBgPos: true,
+        							overflowY: 'auto',
+        							closeBtnInside: true,
+        							preloader: false,
+        							midClick: true,
+        							removalDelay: 300,
+        							mainClass: 'my-mfp-zoom-in'
+        						});
+        						});
+        				</script>
+        		</div>
+        		<div class="clearfix"> </div>
+        		</div>
+        </div>
+<div class=" banner-buying">
+	<div class="container">
+	<h3><span>Log</span> In</h3>
+	</div>
+</div>
+
+<div class="login-right">
+	<div class="container">
+		<h3 id="top">Login</h3>
+		<div class="login-top">
+				<ul class="login-icons">
+	        <li><a href="#" class="fb" onclick="logFacebook()"><i class="facebook" id="fbbtn"></i><span>Facebook</span></a></li>
+                <li><a href="#" class="go" onclick="logGoogle()"><i class="google" id="gobtn"></i><span>Google +</span></a></li>
+		<li><a href="#" class="twit" onclick="logTwi()"><i class="twitter"></i><span>Twitter</span></a></li>
+		<li><a href="#" class="in" onclick="logGit()"><i class="in"></i><span>GitHub</span></a></li>
+
+
+					<div class="clearfix"> </div>
+				</ul>
+				<div class="form-info">
+					<form>
+            <label>Email: </label>
+						<input id="accemail" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"  placeholder="Ex.legendbooking2018@gmail.com" required="" >
+            <label>password: </label>
+						<input id="accpassword" type="password" pattern=".{6,}" placeholder="Ex.king123 " required="">
+
+				           	<a href="#top" id="Login" class="hvr-sweep-to-right more">Login</a>
+
+                    <span id="invalid"></span>
+					</form>
+				</div>
+			<div class="create">
+				<h4>Are You New?</h4>
+				<a class="hvr-sweep-to-right" href="TeacherSignUpPage.html">Create an Account</a>
+				<div class="clearfix"> </div>
+			</div>
+	</div>
+</div>
+</div>
+<!--footer-->
+        <div class="footer">
+        	<div class="container">
+        		<div class="footer-top-at">
+        			<div class="col-md-3 amet-sed">
+        				<h4>Our Company</h4>
+        				<ul class="nav-bottom">
+                  <li><a href="AboutPage.html">About Us</a></li>
+
+        				</ul>
+        			</div>
+
+        			<div class="col-md-3 amet-sed">
+        				<h4>Customer Support</h4>
+        				<p>Mon-Fri, 7AM-7PM </p>
+        				<p>Sat-Sun, 8AM-5PM </p>
+        				<p>012-3456 789</p>
+
+        				
+        			</div>
+        			<div class="col-md-3 amet-sed ">
+        				<h4>Join Us</h4>
+        				   <ul class="nav-bottom">
+
+        						<li><a href="StudentSignUpPage.html">Student Sign Up</a></li>
+        						<li><a href="TeacherSignUpPage.html">Teacher Sign Up</a></li>
+
+        					</ul>
+        					<ul class="social">
+                    <li><a href="https://www.facebook.com/"><i> </i></a></li>
+                    <li><a href="https://plus.google.com/"><i class="gmail"> </i></a></li>
+                    <li><a href="https://www.twitter.com/"><i class="twitter"> </i></a></li>
+                    <li><a href="https://www.instagram.com/"><i class="camera"> </i></a></li>
+                    <li><a href="https://dribbble.com/"><i class="dribble"> </i></a></li>
+        					</ul>
+        			</div>
+        		<div class="clearfix"> </div>
+        		</div>
+        	</div>
+        </div>
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="col-md-4 footer-logo">
+              <h2><a href="index.html">Super Brilliant</a></h2>
+            </div>
+            <div class="col-md-8 footer-class">
+              <p >Copyright© 2019 Super Brilliant Home Tuition. All Rights Reserved  </p>
+            </div>
+          <div class="clearfix"> </div>
+          </div>
+        </div>
+        </div>
+        <!--//footer-->
+</body>
+</html>

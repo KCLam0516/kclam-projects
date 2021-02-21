@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CovidChecking">
+
+    <include layout="@layout/toolbar"></include>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="30dp"
+        android:text="Please tick on the below symptoms if you have any of it:"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/flu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginLeft="20dp"
+        android:text="Flu" />
+
+    <CheckBox
+        android:id="@+id/soreThroat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/flu"
+        android:layout_marginLeft="20dp"
+        android:text="Sore Throat" />
+
+    <CheckBox
+        android:id="@+id/cough"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/soreThroat"
+        android:layout_marginLeft="20dp"
+        android:text="Cough" />
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/cough"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:text="Body Temperature :"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cough"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/temp"
+        android:ems="10"
+        android:hint="    in Celcius  "
+        android:inputType="textPersonName"
+        android:textColorHint="#676363" />
+
+    <Button
+        android:id="@+id/check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/temperature"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_shape"
+        android:text="Check for Covid-19"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/resultChecked"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/check"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:gravity="center"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/colorPrimaryDark"
+        android:gravity="center_horizontal"
+        android:text="Covid-19 Checking"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="27dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="@drawable/border"
+            android:drawableTop="@drawable/ic_baseline_info_24"
+            android:drawableTint="@color/white"
+            android:paddingTop="4dp"
+            android:text="Info"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+
+        <Button
+            android:id="@+id/third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="@drawable/selected"
+            android:drawableTop="@drawable/ic_baseline_search_24"
+            android:drawableTint="@color/darkGrey"
+            android:paddingTop="4dp"
+            android:text="Check"
+            android:textColor="@color/darkGrey"
+            android:textSize="13dp" />
+
+        <Button
+            android:id="@+id/forth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="@drawable/border"
+            android:drawableTop="@drawable/ic_baseline_notifications_active_24"
+            android:drawableTint="@color/white"
+            android:paddingTop="4dp"
+            android:text="Reminder"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+
+        <Button
+            android:id="@+id/fifth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:background="@drawable/border"
+            android:drawableTop="@drawable/ic_baseline_location_city_24"
+            android:drawableTint="@color/white"
+            android:paddingTop="4dp"
+            android:text="Location"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
