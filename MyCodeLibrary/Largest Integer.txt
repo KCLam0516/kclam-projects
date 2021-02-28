@@ -4,7 +4,7 @@ public static int solution(int A)
         int count[] = new int[10]; 
           
         // Converting given number to string 
-        String str = Integer.toString(num); 
+        String str = Integer.toString(A); 
           
         // Updating the count array 
         for(int i=0; i < str.length(); i++) 

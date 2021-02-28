@@ -1,0 +1,10 @@
+﻿  Source.cpp
+c:\users\user\desktop\project430\project430\source.cpp(86): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\desktop\project430\project430\source.cpp(93): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\user\desktop\project430\project430\source.cpp(169): warning C4244: '=': conversion from '_Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=double
+          ]
+c:\users\user\desktop\project430\project430\source.cpp(183): warning C4101: 'option': unreferenced local variable
+  Project430.vcxproj -> C:\Users\user\Desktop\Project430\x64\Debug\Project430.exe
